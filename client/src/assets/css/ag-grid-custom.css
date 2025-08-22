@@ -1,0 +1,160 @@
+/* src/ag-grid-custom.css 파일 생성 */
+.ag-theme-Balham {
+  /* 색상 변수 */
+  --ag-foreground-color: #000;
+  --ag-background-color: #fff;
+  --ag-header-foreground-color: #000;
+  /* --ag-header-background-color: #fff; */
+  --ag-header-background-color: #fafafa;
+  --ag-odd-row-background-color: var(--ag-background-color);
+  --ag-even-row-background-color: var(--ag-background-color);
+  --ag-odd-row-background-color: var(--ag-background-color);
+  /* 테두리 변수 */
+  --ag-borders: 1px solid hsla(220, 20%, 97.6%, 1);
+  --ag-border-color: #ccc;
+  --ag-checkbox-checked-shape-color: #000;
+  /* 폰트 크기 */
+  --ag-font-size: 14px;
+
+  /* --ag-header-font-size: 16px; */
+
+  /* 행 높이 */
+  /* --ag-row-height: 40px;
+  --ag-header-height: 50px; */
+
+  /* 셀 간격 */
+  --ag-cell-horizontal-padding: 15px;
+
+  /* 선택된 행 */
+  --ag-selected-row-background-color: #d9eaff;
+  --ag-row-hover-color: hsla(220, 20%, 88%, 0.2);
+
+  /* 범위 선택 테두리 색상 */
+  --ag-range-selection-border-color: #fff;
+}
+
+/* 다크 모드 */
+.ag-theme-Balham-dark {
+  /* 색상 변수 */
+  --ag-foreground-color: #fff;
+  --ag-background-color: #262626;
+  --ag-header-foreground-color: #fff;
+  --ag-header-background-color: #121212;
+  --ag-odd-row-background-color: var(--ag-background-color);
+  --ag-even-row-background-color: #363636;
+  --ag-alpine-active-color: #fff;
+  /* 테두리 변수 */
+  --ag-border-color: #444;
+  /* 셀 선택시 스타일 */
+  --ag-selected-row-background-color: #3f3f3f;
+
+  /* 마우스 오버시 색상 */
+  --ag-row-hover-color: rgba(255, 255, 255, 0.1);
+
+  /* .ag-checkbox-input-wrapper {
+    border-radius: 0;
+    color: #000;
+    background-color: #fff;
+     margin-top: 0.21rem;
+  }  */
+
+  /* 기타 스타일... */
+  /* 셀선택됬을때 border 스타일 제거 */
+  .ag-ltr .ag-cell-focus:not(.ag-cell-range-selected):focus-within {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* 행 테두리가 테이블 전체 너비만큼 표시되도록 설정 */
+.ag-theme-Balham .ag-center-cols-container,
+.ag-theme-Balham-dark .ag-center-cols-container {
+  min-width: 100%;
+}
+
+.ag-theme-Balham .ag-header-row:last-child {
+  border-bottom: var(--ag-row-border-style) var(--ag-row-border-color)
+    var(--ag-row-border-width);
+}
+
+.ag-theme-Balham .ag-row,
+.ag-theme-Balham-dark .ag-row {
+  width: 100%;
+  /* border-bottom: var(--ag-borders); */
+  height: 48px;
+}
+
+/* 컨텐츠 영역이 테이블 너비보다 작을 때도 전체 너비 차지하도록 */
+.ag-theme-Balham .ag-center-cols-clipper,
+.ag-theme-Balham-dark .ag-center-cols-clipper {
+  min-width: 100%;
+}
+
+/* 마지막 행의 하단 테두리 제거 (선택 사항) */
+/* .ag-theme-Balham .ag-row:last-child,
+.ag-theme-Balham-dark .ag-row:last-child {
+  border-bottom: none;
+} */
+
+/* 개별 셀 테두리 제거 (행 테두리만 사용) */
+.ag-theme-Balham .ag-cell,
+.ag-theme-Balham-dark .ag-cell {
+  border-bottom: none;
+}
+
+.ag-checkbox-input-wrapper {
+  border-radius: 3;
+  background-color: #fff;
+  border-color: #000;
+  margin-top: 0.21rem;
+}
+
+.ag-row,
+.ag-cell {
+  overflow: visible !important;
+}
+
+.ag-header-cell-label {
+  justify-content: center;
+}
+.ag-cell {
+  /* display: flex !important; */
+  text-align: center !important;
+  justify-content: center;
+}
+.ag-cell.checkbox-center .ag-cell-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+.ag-header {
+  z-index: 100 !important; /* ReactTooltip보다 더 높은 값 */
+}
+
+/* pagination */
+.ag-list.ag-select-list.ag-ltr.ag-popup-child.ag-popup-positioned-under {
+  z-index: 9999 !important;
+}
+.no-border-radius .ag-root-wrapper {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.ag-cell-inline-editing {
+  border: none !important;
+  box-shadow: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 0;
+}
+.ag-cell-not-inline-editing {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.ag-selection-checkbox {
+  margin: 0 !important;
+}
