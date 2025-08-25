@@ -2,6 +2,8 @@ import { createBrowserRouter, Navigate, RouterProvider } from 'react-router';
 import { QueryClient, useQueryClient } from '@tanstack/react-query';
 import { useMemo } from 'react';
 import { paths } from '../config/path';
+import LoginPage from './routers/auth/login';
+import AuthLayout from '@/components/layout/authLayout';
 
 const convert = (queryClient: QueryClient) => (m: any) => {
   const { clientLoader, clientAction, default: Component, ...rest } = m;
@@ -20,19 +22,11 @@ function createAppRouter(queryClient: QueryClient) {
       element: <Navigate to="/auth/login" replace />,
     },
     {
-      element: (
-        <div>
-          <div>test</div>
-        </div>
-      ),
+      element: <AuthLayout />,
       children: [
         {
           path: paths.auth.login.path,
-          element: (
-            <div>
-              <div>test</div>
-            </div>
-          ),
+          element: <LoginPage />,
         },
       ],
     },
