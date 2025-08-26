@@ -1,13 +1,17 @@
-import { DashboardLayout as DashboardLayoutStyle } from '@toolpad/core/DashboardLayout';
+import {
+  ThemeSwitcher,
+  DashboardLayout as DashboardLayoutStyle,
+} from '@toolpad/core/DashboardLayout';
+import { BRANDING, getNavigation } from '@/app/routers/app/root';
 import { PageContainer } from '@toolpad/core/PageContainer';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Box, Stack, Typography } from '@mui/material';
-import { getNavigation } from '@/app/routers/app/root';
 import LogoutButton from '../auth/logoutButton';
 
 function ToolbarActionsComponent() {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
+      {import.meta.env.DEV && <ThemeSwitcher />}
       <LogoutButton />
     </Box>
   );
@@ -34,9 +38,9 @@ const getCurrentTitle = (location) => {
     path.includes(item.segment),
   ) as any;
 
-  if (!navItem) return `/ 사용자정보`;
+  if (!navItem) return `${BRANDING.title} / 사용자정보`;
 
-  return ` / ${navItem?.title}`;
+  return ` ${BRANDING.title} / ${navItem?.title}`;
 };
 
 function DashboardLayout() {

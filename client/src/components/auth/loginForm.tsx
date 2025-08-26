@@ -38,6 +38,7 @@ function LoginForm({}) {
   const onClickRememberIdChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const checked = e.target.checked;
+
       setRememberId(checked);
       if (!checked) {
         setIsRememberId(false);

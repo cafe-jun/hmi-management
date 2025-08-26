@@ -1,13 +1,18 @@
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router';
+import { ErrorBoundary as AppRootErrorBoundary } from './routers/app/root';
 import { QueryClient, useQueryClient } from '@tanstack/react-query';
-import { useMemo } from 'react';
-import { paths } from '../config/path';
-import LoginPage from './routers/auth/loginPage.tsx';
-import AuthLayout from '@/components/layout/authLayout';
-import { AppGuard, AuthGuard } from '@/lib/auth';
-import AppRoot from './routers/app/root';
 import DashboardLayout from '@/components/layout/dashboardLayout';
 import DashboardPage from './routers/app/dashboardPage.tsx';
+import HMIManagementPage from './routers/app/hmiPage.tsx';
+import AuthLayout from '@/components/layout/authLayout';
+import LoginPage from './routers/auth/loginPage.tsx';
+import { AppGuard, AuthGuard } from '@/lib/auth';
+import AppRoot from './routers/app/root';
+import { paths } from '../config/path';
+import { useMemo } from 'react';
+import AuditLogPage from './routers/app/auditLog.tsx';
+import SettingPage from './routers/app/settingPage';
+import UserPage from './routers/app/userPage.tsx';
 
 const convert = (queryClient: QueryClient) => (m: any) => {
   const { clientLoader, clientAction, default: Component, ...rest } = m;
@@ -44,9 +49,10 @@ function createAppRouter(queryClient: QueryClient) {
         <AppRoot />
         // </AppGuard>
       ),
+      ErrorBoundary: AppRootErrorBoundary,
       children: [
         {
-          path: paths.app.dashboard.path,
+          path: paths.app.root.path,
           element: <DashboardLayout />,
           children: [
             {
@@ -56,6 +62,32 @@ function createAppRouter(queryClient: QueryClient) {
                   convert(queryClient),
                 ),
               element: <DashboardPage />,
+            },
+            {
+              path: paths.app.hmi.path,
+              lazy: () =>
+                import('./routers/app/hmiPage.tsx').then(convert(queryClient)),
+              element: <HMIManagementPage />,
+            },
+            {
+              path: paths.app.users.path,
+              lazy: () =>
+                import('./routers/app/userPage.tsx').then(convert(queryClient)),
+              element: <UserPage />,
+            },
+
+            {
+              path: paths.app.auditLog.path,
+              lazy: () =>
+                import('./routers/app/auditLog.tsx').then(convert(queryClient)),
+              element: <AuditLogPage />,
+            },
+
+            {
+              path: paths.app.setting.path,
+              lazy: () =>
+                import('./routers/app/settingPage').then(convert(queryClient)),
+              element: <SettingPage />,
             },
           ],
         },

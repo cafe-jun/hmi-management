@@ -31,7 +31,6 @@ function LogoutButton() {
       setUser(null);
 
       localStorage.removeItem('auth-storage');
-
       // React Query 캐시 클리어 - User 관련 데이터 삭제
       queryClient.clear();
 
@@ -51,6 +50,7 @@ function LogoutButton() {
       if (text === '로그아웃') {
         logout.mutate(null);
       }
+
       closeMenu();
     },
     [closeMenu, logout],
@@ -59,6 +59,7 @@ function LogoutButton() {
   //사용자정보화면으로이동
   const onClickAccount = useCallback(() => {
     navigate('/app/account');
+
     closeMenu();
   }, []);
 

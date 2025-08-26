@@ -8,6 +8,22 @@ export const paths = {
       path: '/app/dashboard',
       getHref: () => '/app/dashboard',
     },
+    hmi: {
+      path: '/app/hmi',
+      getHref: () => '/app/hmi',
+    },
+    users: {
+      path: '/app/users',
+      getHref: () => '/app/users',
+    },
+    auditLog: {
+      path: '/app/auditLog',
+      getHref: () => '/app/auditLog',
+    },
+    setting: {
+      path: '/app/setting',
+      getHref: () => '/app/setting',
+    },
   },
   auth: {
     root: {
