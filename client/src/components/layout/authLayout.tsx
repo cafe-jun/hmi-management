@@ -1,6 +1,7 @@
 import { css, Global } from '@emotion/react';
 import { Box, createTheme, ThemeProvider, useTheme } from '@mui/material';
-import SecurityIcon from '@mui/icons-material/Security';
+import VideoLabelIcon from '@mui/icons-material/VideoLabel';
+import { Outlet } from 'react-router-dom';
 
 const globalStyles = css`
   html,
@@ -21,6 +22,84 @@ export const Container = css`
   height: 100vh;
   overflow: hidden;
   background: #f5f5f5;
+`;
+
+export const InnerContainer = css`
+  display: flex;
+  width: 900px;
+  height: 700px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+
+  @media (max-width: 1280px) {
+    width: 90%;
+    margin: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+  }
+`;
+
+const LeftContainer = ({ theme }: { theme: any }) => css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  background: ${theme.palette.mode === 'dark' ? '#ffffff' : '#000000'};
+  color: ${theme.palette.mode === 'dark' ? '#000000' : '#ffffff'};
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const RightContainer = ({ theme }: { theme: any }) => css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  background-color: ${theme.palette.background.paper};
+
+  @media (max-width: 768px) {
+    width: 100%;
+    border-radius: 0;
+    height: inherit;
+  }
+`;
+
+const FormContainer = css`
+  .logo {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2px;
+    h3 {
+      margin: 0px;
+    }
+  }
+  .lang {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+  }
+
+  padding: 1.5rem;
+  width: 360px;
+  border-radius: 8px;
 `;
 
 function AuthLayout() {
@@ -96,53 +175,15 @@ function AuthLayout() {
     <>
       <Global styles={globalStyles} />
       <ThemeProvider theme={customTheme}>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100vh',
-            minHeight: '100vh',
-            overflow: 'hidden',
-            background: '#f5f5f5',
-          }}
-        >
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
-              width: '900px',
-              height: '700px',
-              borderRadius: '16px',
-              overflow: 'hidden',
-            }}
-          >
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <SecurityIcon style={{ fontSize: 80 }} />
+        <Box sx={Container}>
+          <Box sx={InnerContainer}>
+            <Box sx={LeftContainer({ theme })}>
+              <VideoLabelIcon style={{ fontSize: 95 }} />
               <h1>{'HMI 관리 시스템'}</h1>
               <h3>v 1.0.0</h3>
             </Box>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignContent: 'center',
-                width: '100%',
-                background: `${theme.palette.background.paper}`,
-              }}
-            >
-              <Box>
+            <Box sx={RightContainer({ theme })}>
+              <Box sx={FormContainer}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -159,6 +200,7 @@ function AuthLayout() {
                     },
                   }}
                 ></Box>
+                <Outlet />
               </Box>
             </Box>
           </Box>

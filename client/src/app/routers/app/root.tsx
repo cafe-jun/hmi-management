@@ -2,7 +2,7 @@ import { ReactRouterAppProvider } from '@toolpad/core/react-router';
 import { Navigation } from 'node_modules/@toolpad/core/esm/AppProvider/AppProvider';
 import DeviceHubIcon from '@mui/icons-material/DeviceHub';
 import appTheme from '@/lib/theme/theme';
-
+import { Outlet } from 'react-router-dom';
 export const getNavigation = (): Navigation => [
   {
     title: 'HMI 관리',
@@ -28,9 +28,8 @@ function AppRoot() {
       theme={appTheme}
       navigation={navigation}
       branding={BRANDING}
-      children
     >
-      {/* <Outlet /> */}
+      <Outlet />
     </ReactRouterAppProvider>
   );
 }

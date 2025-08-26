@@ -4,6 +4,10 @@ export const paths = {
       path: '/app',
       getHref: () => '/app',
     },
+    dashboard: {
+      path: '/app/dashboard',
+      getHref: () => '/app/dashboard',
+    },
   },
   auth: {
     root: {
@@ -13,6 +17,14 @@ export const paths = {
     login: {
       path: '/auth/login',
       getHref: () => '/auth/login',
+    },
+    changePwd: {
+      path: '/auth/change-password',
+      getHref: () => '/auth/change-password',
+    },
+    register: {
+      path: '/auth/register',
+      getHref: () => '/auth/register',
     },
   },
 };
