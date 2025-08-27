@@ -1,0 +1,1 @@
+import{H as s,j as a,J as r,K as n}from"./chunk-BOWf2dic.js";var c=a.Fragment,j=function(c,j,t){return s.call(j,"css")?a.jsx(r,n(c,j),t):a.jsx(c,j,t)},t=function(c,j,t){return s.call(j,"css")?a.jsxs(r,n(c,j),t):a.jsxs(c,j,t)};export{c as F,t as a,j};

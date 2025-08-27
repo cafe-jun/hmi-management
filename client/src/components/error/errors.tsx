@@ -126,7 +126,6 @@ export const navigateByLoginError = (
   setNeedsRegistration,
   errorCode,
   navigate,
-  searchParams,
   userIdRef?,
 ) => {
   switch (errorCode) {
@@ -134,18 +133,6 @@ export const navigateByLoginError = (
       setNeedsRegistration(true);
       navigate(paths.auth.register.getHref());
       break;
-    case 'WUS4113': // sso 비밀번호 변경 필요
-      const userId = userIdRef.current;
-      navigate(`/auth/web-scada/password-change?${searchParams}`, {
-        state: { userId },
-        replace: true,
-      });
-      break;
-    case 'WUS4127': // CFR PART 11 - 계정 최초 로그인 시 비밀번호 변경 필수
-      navigate(paths.auth.changePwd.getHref(), {
-        state: { errorCode, userId: userIdRef.current },
-        replace: true,
-      });
     case 'WUS4129': // CFR PART 11 - 변경주기 -강제변경
       navigate(paths.auth.changePwd.getHref(), {
         state: {

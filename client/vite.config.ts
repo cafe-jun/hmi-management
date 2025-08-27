@@ -59,7 +59,7 @@ export default defineConfig(({ mode }): any => {
             // MUI 관련 (가장 큰 청크)
             'mui-core': ['@mui/material', '@emotion/react', '@emotion/styled'],
             'mui-icons': ['@mui/icons-material'],
-            'mui-charts': ['@mui/x-charts'],
+            // 'mui-charts': ['@mui/x-charts'],
 
             // 데이터 그리드
             'ag-grid': ['ag-grid-community', 'ag-grid-react'],
@@ -84,17 +84,8 @@ export default defineConfig(({ mode }): any => {
               '@toolpad/core',
             ],
 
-            // 국제화
-            i18n: ['i18next', 'react-i18next'],
-
             // 기타
-            misc: [
-              'papaparse',
-              'react-csv',
-              'socket.io-client',
-              'react-cookie',
-              'react-error-boundary',
-            ],
+            misc: ['react-csv', 'react-cookie', 'react-error-boundary'],
           },
 
           // 청크 파일명 설정 (캐싱 최적화)
