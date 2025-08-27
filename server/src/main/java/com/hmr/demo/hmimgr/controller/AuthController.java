@@ -1,7 +1,5 @@
 package com.hmr.demo.hmimgr.controller;
 
-
-import com.hmr.demo.hmimgr.domain.entity.User;
 import com.hmr.demo.hmimgr.security.JwtUtil;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -23,10 +21,7 @@ public class AuthController {
         this.passwordEncoder = passwordEncoder;
     }
 
-        @PostMapping("/register")
-        public String register(@RequestParam String username, @RequestParam String password) {
-            
-        }
+
 
     @PostMapping("login")
     public String login(@RequestParam String username,@RequestParam String password) {

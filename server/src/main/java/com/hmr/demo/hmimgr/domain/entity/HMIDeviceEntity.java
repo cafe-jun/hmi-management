@@ -5,19 +5,14 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.ToString;
 
+@Entity
+@Table(name = "users")
 @Getter
 @ToString(callSuper = true)
-@Table(indexes = {
-        @Index(columnList = "title"),
-        @Index(columnList = "createdAt"),
-        @Index(columnList = "createdBy")
-})
-public class HMIDevice {
+public class HMIDeviceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-
 
 
 }
