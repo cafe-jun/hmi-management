@@ -7,7 +7,7 @@ import org.springframework.data.domain.AuditorAware;
 
 import java.util.Optional;
 
-@Configuration
+//@Configuration
 public class JpaConfig {
 
 //    @Bean

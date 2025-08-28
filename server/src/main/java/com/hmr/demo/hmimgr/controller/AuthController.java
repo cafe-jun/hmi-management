@@ -1,6 +1,5 @@
 package com.hmr.demo.hmimgr.controller;
 
-import com.hmr.demo.hmimgr.security.JwtUtil;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,7 +26,7 @@ public class AuthController {
     public String login(@RequestParam String username,@RequestParam String password) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
         if(passwordEncoder.matches(password,userDetails.getPassword())) {
-            return JwtUtil.generateToken(username);
+            return "JwtUtil.generateToken(username)";
         } else {
             throw new RuntimeException("Invalid credentials");
         }

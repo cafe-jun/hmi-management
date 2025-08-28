@@ -1,4 +1,4 @@
-package com.hmr.demo.hmimgr.domain.entity;
+package com.hmr.demo.hmimgr.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -7,7 +7,7 @@ import lombok.*;
 @Table(name = "users")
 @Setter @Getter
 @ToString(callSuper = true)
-public class UserEntity {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,9 +22,9 @@ public class UserEntity {
     @Column(nullable = false, unique = true, length = 100)
     private String role;
 
-    public UserEntity(){}
+    public User(){}
     @Builder
-    public UserEntity(Long id,String username,String password,String role) {
+    public User(Long id,String username,String password,String role) {
         this.id = id;
         this.username = username;
         this.password = password;

@@ -1,15 +1,15 @@
-package com.hmr.demo.hmimgr.domain.entity;
+package com.hmr.demo.hmimgr.model;
 
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.ToString;
 
-@Entity
-@Table(name = "users")
 @Getter
 @ToString(callSuper = true)
-public class HMIDeviceEntity {
+@Table(name = "hmi")
+@Entity
+public class HMIDevice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

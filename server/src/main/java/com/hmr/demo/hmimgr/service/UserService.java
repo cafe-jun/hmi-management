@@ -1,6 +1,6 @@
 package com.hmr.demo.hmimgr.service;
 
-import com.hmr.demo.hmimgr.domain.entity.UserEntity;
+import com.hmr.demo.hmimgr.model.User;
 import com.hmr.demo.hmimgr.dto.users.UserCreateRequest;
 import com.hmr.demo.hmimgr.dto.users.UserDto;
 import com.hmr.demo.hmimgr.repository.UserRepository;
@@ -16,7 +16,7 @@ public class UserService {
     private final UserRepository userRepository;
 
     public UserDto createUser(UserCreateRequest dto) {
-        UserEntity user = UserEntity.builder()
+        User user = User.builder()
                 .username(dto.getUsername())
                 .password(dto.getPassword())
                 .role(dto.getRole())
@@ -26,7 +26,7 @@ public class UserService {
 
 
     public UserDto updateUser(Long id,UserCreateRequest dto) {
-        UserEntity user = userRepository.findById(id)
+        User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         user.setUsername(dto.getUsername());
         user.setPassword(dto.getPassword());
@@ -52,7 +52,7 @@ public class UserService {
     }
 
 
-    private UserDto toDto(UserEntity user) {
+    private UserDto toDto(User user) {
         return UserDto.builder()
                 .id(user.getId())
                 .username(user.getUsername())
